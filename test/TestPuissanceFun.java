@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
 
-
->>>>>>> origin/master
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,7 +34,7 @@ public class TestPuissanceFun {
         
         Plateau tab = new Plateau();
         
-        Plateau.initialisation();
+        tab.initialisation();
         
         
         for(int i = 0; i < Plateau.largeur; i++){
