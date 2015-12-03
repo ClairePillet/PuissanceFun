@@ -4,20 +4,20 @@
  * and open the template in the editor.
  */
 package puissancefun;
+
 import java.util.*;
 
-public class Pions{
+public class Pions {
 
-	public static char apparence;
+    public static char apparence;
 
-	public Pions(){
-		this('*');
-	}
+    public Pions() {
+        this('*');
+    }
 
-	public Pions(char apparence){
+    public Pions(char apparence) {
 
-		this.apparence = apparence;
-	}
-
+        this.apparence = apparence;
+    }
 
 }//fin class Pions
