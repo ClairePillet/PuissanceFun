@@ -18,8 +18,6 @@ public class Plateau {
     public Plateau(int largeur, int longeur) {
         this.largeur = largeur;
         this.longueur = longeur;
-        initialisation();
-
     }
 
     public Plateau() {

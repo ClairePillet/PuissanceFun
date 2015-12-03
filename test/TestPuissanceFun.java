@@ -37,8 +37,8 @@ public class TestPuissanceFun {
         tab.initialisation();
         
         
-        for(int i = 0; i < Plateau.largeur; i++){
-            for(int j = 0; j < Plateau.longueur; j++){
+        for(int i = 0; i < tab.largeur; i++){
+            for(int j = 0; j < tab.longueur; j++){
                 assertEquals(tab.plateau[i][j],0,2);
             }
         }
