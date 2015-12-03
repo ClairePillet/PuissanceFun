@@ -1,20 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import puissancefun.Plateau;
 
-/**
- *
- * @author Louis
- */
+
 public class TestPuissanceFun {
     
     public TestPuissanceFun() {
@@ -36,9 +28,18 @@ public class TestPuissanceFun {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @org.junit.Test
+    public void testMethodes(){
+        
+        Plateau tab = new Plateau();
+        
+        Plateau.initialisation();
+        
+        
+        for(int i = 0; i < Plateau.largeur; i++){
+            for(int j = 0; j < Plateau.longueur; j++){
+                assertEquals(tab.plateau[i][j],0,2);
+            }
+        }
+    }
 }

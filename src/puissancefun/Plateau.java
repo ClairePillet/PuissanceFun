@@ -34,7 +34,7 @@ public class Plateau
 	//methodes
 
 
-	public void initialisation(){
+	public static void initialisation(){
 		plateau = new int[largeur][longueur];
 		for(int i=0; i<largeur; i++){
 			Random r = new Random();
