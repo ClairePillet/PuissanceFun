@@ -3,9 +3,8 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
-import puissancefun.Plateau;
+import puissancefun.*;
 
 
 public class TestPuissanceFun {
@@ -36,11 +35,32 @@ public class TestPuissanceFun {
         
         tab.initialisation();
         
-        
+        //test bien rempli
         for(int i = 0; i < tab.largeur; i++){
             for(int j = 0; j < tab.longueur; j++){
                 assertEquals(tab.plateau[i][j],0,2);
             }
         }
+        
+        //fail forced
+        
+         for(int i = 0; i < tab.largeur; i++){
+            for(int j = 0; j < tab.longueur; j++){
+                assertEquals(tab.plateau[i][j],8,8);
+            }
+        }
+         
+        Pions joueur1 = new Pions();
+        
+        //test bonne apparence
+        assertEquals(joueur1.apparence,'*');
+        
+        Pions joueur2 = new Pions('/');
+        
+        assertEquals(joueur2.apparence,'/');
+        
+        //fail forced
+        
+        assertEquals(joueur2.apparence,'O');
     }
 }

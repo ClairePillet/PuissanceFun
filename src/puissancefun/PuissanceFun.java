@@ -29,13 +29,13 @@ public class PuissanceFun {
         System.out.println("Saisir une longueur: ");
         int longueur = Integer.parseInt(rep.readLine());
 
-        new Plateau(largeur, longueur);
+        Plateau tab = new Plateau(largeur, longueur);
 
         System.out.println("Choix apparence joueur 1: ");
         String s = rep.readLine();
         /* char*/ lookUn = s.charAt(0);
 
-        joueurUn = new Pions(lookUn);
+        Pions joueurUn = new Pions(lookUn);
 
         System.out.println("Choix apparence joueur 2: ");
         s = rep.readLine();
