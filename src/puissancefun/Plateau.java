@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package puissancefun;
 
 import java.util.*;
@@ -10,9 +6,9 @@ import java.util.*;
 public class Plateau {
 
     //attributs
-    public static int longueur;
-    public static int largeur;
-    public static int[][] plateau;
+    public int longueur;
+    public int largeur;
+    public int[][] plateau;
 
     //constructeurs
     public Plateau(int largeur, int longeur) {
@@ -39,7 +35,7 @@ public class Plateau {
         }
     }
 
-    public static void affichage() {
+    public void affichage() {
         int l = 0;
         System.out.println();
         while (l <= 2 * longueur) {
@@ -76,7 +72,7 @@ public class Plateau {
         System.out.println();
     }
 
-    public static void chute() {
+    public void chute() {
         for (int j = 0; j < longueur; j++) {
             if (plateau[0][j] != 0 && plateau[0][j] != 2) {
                 int i = 0;
@@ -96,7 +92,7 @@ public class Plateau {
         }
     }
 
-    public static boolean checkVictoire() {
+    public boolean checkVictoire() {
         int cpt;
         boolean victoire = false;
 

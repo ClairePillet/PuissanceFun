@@ -43,29 +43,29 @@ public class PuissanceFun {
 
         joueurDeux = new Pions(lookDeux);
 
-        while (Plateau.checkVictoire() != true) {
-
+        while (tab.checkVictoire() != true) {
+                //juste pour voir la matice en nombre non present dans l'appli final
             for (int i = 0; i < largeur; i++) {
                 for (int j = 0; j < longueur; j++) {
-                    System.out.print(Plateau.plateau[i][j]);
+                    System.out.print(tab.plateau[i][j]);
                 }
                 System.out.println();
             }
 
-            Plateau.affichage();
+            tab.affichage();
             if (tour % 2 == 0) {
                 System.out.println("Tour du joueur 1: ");
                 System.out.println("Saisir la colone ou placer le pion: ");
                 int choix = Integer.parseInt(rep.readLine());
-                Plateau.plateau[0][choix - 1] = -1;
-                Plateau.chute();
+                tab.plateau[0][choix - 1] = -1;
+                tab.chute();
 
             } else {
                 System.out.println("Tour du joueur 2: ");
                 System.out.println("Saisir la colone ou placer le pion: ");
                 int choix = Integer.parseInt(rep.readLine());
-                Plateau.plateau[0][choix - 1] = 1;
-                Plateau.chute();
+                tab.plateau[0][choix - 1] = 1;
+                tab.chute();
 
             }
             tour++;
