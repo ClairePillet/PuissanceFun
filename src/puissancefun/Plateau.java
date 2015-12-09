@@ -1,4 +1,3 @@
-
 package puissancefun;
 
 import java.util.*;
@@ -6,23 +5,26 @@ import java.util.*;
 public class Plateau {
 
     //attributs
-    public int longueur;
-    public int largeur;
+    public int longueur;//->
+    public int largeur;// |
     public int[][] plateau;
 
     //constructeurs
     public Plateau(int largeur, int longeur) {
         this.largeur = largeur;
         this.longueur = longeur;
+        this.initialisation();
     }
 
     public Plateau() {
         this.largeur = 5;
         this.longueur = 5;
+        this.initialisation();
+
     }
 
-	//methodes
-    public  void initialisation() {
+    //methodes
+    public void initialisation() {
         plateau = new int[largeur][longueur];
         for (int i = 0; i < largeur; i++) {
             Random r = new Random();
@@ -50,7 +52,7 @@ public class Plateau {
                 if (plateau[i][j] == 0) {
                     System.out.print(' ');
                 }
-                if (plateau[i][j] == 2) {
+                if (plateau[i][j] == 2) {//affiche les case secrete
                     System.out.print('.');
                 }
                 if (plateau[i][j] == -1) {
@@ -90,73 +92,75 @@ public class Plateau {
                 }
             }
         }
-    }
+    }//bug quand les piont sont a tout en haut du tab
 
     public boolean checkVictoire() {
         int cpt;
         boolean victoire = false;
 
         cpt = 0;
-        for (int i = largeur - 1; i >= 0; i--) {
-            for (int j = 0; j < longueur - 1; j++) {
+        for (int i = largeur-1 ; i >= 0; i--) {
+            for (int j = 0; j < longueur-1 ; j++) {
                 if (plateau[i][j] != 0) {
                     if (/*(plateau[i][j]!= 0 && plateau[i][j]!=2) &&*/plateau[i][j] == plateau[i][j + 1]) {
                         cpt++;
-                    } else {
-                        cpt = 0;
+                    } else{
+                        cpt=0;
                     }
                 }
             }
-            if (cpt == 4) {
+            if (cpt == 3) {
                 victoire = true;
             }
         }
 
-    
+     /*   cpt=0;
+         for(int i = 0; i < largeur-1; i++){
+         for(int jj = 0; jj < longueur-1; jj++){
+         if(plateau[i][jj] == plateau[i+1][jj+1]){
+         cpt++;
+         }else{
+         cpt--;
+         }
+         i++;
+         }
+         }
+         if (cpt == 4) {
+                victoire = true;
+            }
+         //fin test diagonale gauche
+         //En cours de réalisation
                 /*cpt=0;
-                 for(int i = 0; i < largeur-1; ii++){
-                 for(int jj = 0; jj < longueur-1; jj++){
-                 if(plateau[i][jj] == plateau[i+1][jj+1]){
-                 cpt++;
-                 }else{
-                 cpt--;
-                 }
-                 i++;
-                 }
-                 }
-                 if(cpt==4) return True;
-                 //fin test diagonale gauche
-                 *///En cours de réalisation
-                /*cpt=0;
-                 for(int ii = 0; ii < largeur-1; ii++){
-                 for(int jj = longueur-1; jj > 1 ; jj++){
-                 if(plateau[ii][jj] == plateau[ii+1][jj-1]){
-                 cpt++;
-                 }else{
-                 cpt--;
-                 }
-                 ii++;
-                 }
-                 }
-                 if(cpt==4) return True;
-                 //fin test diagonale droite
-                 *///En cours de réalisation
+         for(int ii = 0; ii < largeur-1; ii++){
+         for(int jj = longueur-1; jj > 1 ; jj++){
+         if(plateau[ii][jj] == plateau[ii+1][jj-1]){
+         cpt++;
+         }else{
+         cpt--;
+         }
+         ii++;
+         }5
+         }
+         if(cpt==4) return True;
+         //fin test diagonale droite
+         *///En cours de réalisation
         cpt = 0;
         for (int j = 0; j < longueur; j++) {
             for (int i = largeur - 1; i > 0; i--) {
                 if (plateau[i][j] != 0) {
                     if (/*(plateau[i][j]!= 0 && plateau[i][j]!=2) &&*/plateau[i][j] == plateau[i - 1][j]) {
                         cpt++;
-                    } else {
-                        cpt = 0;
+                    }else{
+                        cpt=0;
                     }
                 }
             }
-            if (cpt == 4) {
+            if (cpt == 3) {
                 victoire = true;
             }
-        }//fin test vertical
+        }
+//fin test vertical
         return victoire;
-    }
+    }//marche aps 
 
 }//fin Plateau

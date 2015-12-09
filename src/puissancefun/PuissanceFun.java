@@ -35,22 +35,20 @@ public class PuissanceFun {
         String s = rep.readLine();
         /* char*/ lookUn = s.charAt(0);
 
-        Pions joueurUn = new Pions(lookUn);
-
+      //  Pions joueurUn = new Pions(lookUn);
         System.out.println("Choix apparence joueur 2: ");
         s = rep.readLine();
         /*char*/ lookDeux = s.charAt(0);
 
-        joueurDeux = new Pions(lookDeux);
-
+    //    joueurDeux = new Pions(lookDeux);
         while (tab.checkVictoire() != true) {
                 //juste pour voir la matice en nombre non present dans l'appli final
-            for (int i = 0; i < largeur; i++) {
-                for (int j = 0; j < longueur; j++) {
-                    System.out.print(tab.plateau[i][j]);
-                }
-                System.out.println();
-            }
+          /* for (int i = 0; i < largeur; i++) {
+             for (int j = 0; j < longueur; j++) {
+             System.out.print(tab.plateau[i][j]);
+             }
+             System.out.println();
+             }*/
 
             tab.affichage();
             if (tour % 2 == 0) {
@@ -70,7 +68,10 @@ public class PuissanceFun {
             }
             tour++;
         }
+        tab.affichage();
+        System.out.println("Victoire");
 
+        
     }
 
 }//puissfun

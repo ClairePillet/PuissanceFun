@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Pions {
 
-    public static char apparence;
+    public char apparence;
 
     public Pions() {
         this('*');
