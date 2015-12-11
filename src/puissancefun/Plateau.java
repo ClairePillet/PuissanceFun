@@ -117,42 +117,40 @@ public class Plateau {
 
         }
 
-       /* cpt = 0;
+       //diag gauche
+        cpt = 0;
         for (int i = 0; i < largeur -1; i++) {
-            
-            for (int jj = 0; jj < longueur -1; jj++) {
-                if (plateau[i][jj] == plateau[i + 1][jj + 1]) {
-                    cpt++;
-                    if (cpt == 3) {
-                        victoire = true;
+            for (int j = 0; j < longueur -1; j++) {
+                if(i==j){
+                    if ((plateau[i][j] != 0 && plateau[i][j] != 2) && plateau[i][j] == plateau[i + 1][j + 1]) {
+                        cpt++;
+                        if (cpt == 3) {
+                            victoire = true;
+                        }
+                    } else {
+                        cpt = 0;
                     }
-                } else {
-                    cpt = 0;
                 }
-                i++;
-
             }
-                                
         }
 
         //fin test diagonale gauche
         //En cours de réalisation
-      /*  cpt = 0;
-        for (int ii = 0; ii < largeur - 1; ii++) {
-            for (int jj = longueur - 1; jj > 1; jj++) {
-                if (plateau[ii][jj] == plateau[ii + 1][jj - 1]) {
-                    cpt++;
-                } else {
-                    cpt--;
+   /*  cpt = 0;
+        for (int i = 0; i < largeur -1; i++) {
+            for (int j = longueur; j < 0 ; j++) {
+                if(i==0){
+                    if (plateau[i][j] == plateau[i + 1][j + 1]) {
+                        cpt++;
+                        if (cpt == 3) {
+                            victoire = true;
+                        }
+                    } else {
+                        cpt = 0;
+                    }
                 }
-                ii++;
-                if (cpt == 4) {
-                    victoire = true;
-                }
-            }5
-        
-        }
-*/
+            }
+        }*/
         //fin test diagonale droite
         //En cours de réalisatio5n
         cpt = 0;
