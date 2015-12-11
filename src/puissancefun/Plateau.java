@@ -161,7 +161,7 @@ public class Plateau {
                                 
          }
 
-         //fin test diagonale gauche
+         //fin test diagonale gauche12
          //En cours de réalisation
          /*  cpt = 0;
          for (int ii = 0; ii < largeur - 1; ii++) {
