@@ -11,68 +11,81 @@ import java.text.*;
 
 public class PuissanceFun {
 
-    public static Pions joueurUn;
-    public static Pions joueurDeux;
-    //en attendant de régler le probleme de l'apparence:
-    public static char lookUn;
-    public static char lookDeux;
-
     public static void main(String[] args) throws Exception {
         int tour = 0;
+        Pions joueurUn;
+        Pions joueurDeux;
+        char lookUn;
+        char lookDeux;
+        boolean verifChute;
 
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader rep = new BufferedReader(isr);
 
-        System.out.println("Saisir une largeur: ");
+        System.out.println(
+                "Saisir une largeur: ");
         int largeur = Integer.parseInt(rep.readLine());
 
-        System.out.println("Saisir une longueur: ");
+        System.out.println(
+                "Saisir une longueur: ");
         int longueur = Integer.parseInt(rep.readLine());
 
-        
-
-        System.out.println("Choix apparence joueur 1: ");
+        System.out.println(
+                "Choix apparence joueur 1: ");
         String s = rep.readLine();
         lookUn = s.charAt(0);
-       Pions joueurUn = new Pions(lookUn);
-       
-        System.out.println("Choix apparence joueur 2: ");
+         joueurUn = new Pions(lookUn);
+
+        System.out.println(
+                "Choix apparence joueur 2: ");
         s = rep.readLine();
-         lookDeux = s.charAt(0);
-        Pions joueurDeux = new Pions(lookDeux);
-        Plateau tab = new Plateau(largeur, longueur,joueurUn,joueurDeux );
+        lookDeux = s.charAt(0);
+         joueurDeux = new Pions(lookDeux);
+        Plateau tab = new Plateau(largeur, longueur, joueurUn, joueurDeux);
+
     //    
-        while (tab.checkVictoire() != true) {
-                //juste pour voir la matice en nombre non present dans l'appli final
-          /* for (int i = 0; i < largeur; i++) {
-             for (int j = 0; j < longueur; j++) {
-             System.out.print(tab.plateau[i][j]);
-             }
-             System.out.println();
-             }*/
+        while (tab.checkVictoire()
+                != true) {
+            //juste pour voir la matice en nombre non present dans l'appli final
+            for (int i = 0; i < largeur; i++) {
+                for (int j = 0; j < longueur; j++) {
+                    System.out.print(tab.plateau[i][j]);
+                }
+                System.out.println();
+            }
 
             tab.affichage();
             if (tour % 2 == 0) {
                 System.out.println("Tour du joueur 1: ");
                 System.out.println("Saisir la colone ou placer le pion: ");
                 int choix = Integer.parseInt(rep.readLine());
-                tab.plateau[0][choix - 1] = -1;
-                tab.chute();
+                //  tab.plateau[0][choix - 1] = -1;
+                tab.chute(choix - 1, -1);
 
             } else {
                 System.out.println("Tour du joueur 2: ");
                 System.out.println("Saisir la colone ou placer le pion: ");
                 int choix = Integer.parseInt(rep.readLine());
-                tab.plateau[0][choix - 1] = 1;
-                tab.chute();
+                //    tab.plateau[0][choix - 1] = 1;
+                do {
+                    verifChute=tab.chute(choix - 1, 1);
+                    if (verifChute == false)
+                            {
+                                System.out.println("Colonne pleine saisiser en une nouvelle.");
+                                choix = Integer.parseInt(rep.readLine());
+                            }
+
+                } while (verifChute == false);
 
             }
             tour++;
         }
-        tab.affichage();
-        System.out.println("Victoire");
 
-        
+        tab.affichage();
+
+        System.out.println(
+                "Victoire");
+
     }
 
 }//puissfun

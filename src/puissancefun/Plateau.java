@@ -8,8 +8,10 @@ public class Plateau {
     public int longueur;//->
     public int largeur;// |
     public int[][] plateau;
-    private Pions j1,j2;
+    private Pions j1, j2;
+
     //constructeurs
+
     public Plateau(int largeur, int longeur, Pions j1, Pions j2) {
         this.largeur = largeur;
         this.longueur = longeur;
@@ -76,26 +78,50 @@ public class Plateau {
         System.out.println();
     }
 
-    public void chute() {
-        for (int j = 0; j < longueur; j++) {
-            if (plateau[0][j] != 0 && plateau[0][j] != 2) {
-                int i = 0;
-                while (i < largeur - 1 && (plateau[i + 1][j] != -1 && plateau[i + 1][j] != 1)) {
-                    int tmp = plateau[i + 1][j];
-                    if (plateau[i + 1][j] == 2) {
-                        int b = 2;
-                        plateau[i + 1][j] = plateau[i][j];
-                        plateau[i][j] = 0;
-                    } else {
-                        plateau[i + 1][j] = plateau[i][j];
-                        plateau[i][j] = tmp;
-                    }
-                    i++;
+    public boolean chute(int j, int joueur) {
+        int i = 0;
+        while (i < largeur ) {
+            if ((plateau[i ][j] == -1 || plateau[i ][j] == 1 )&& i!=0) {
+                System.out.println("1");
+                if (plateau[i-1][j] == 0) {
+                    plateau[i-1][j] = joueur;
+                    System.out.println("0");
+                    return true;
+                    
+                }
+                if (plateau[i-1][j] == 2) {
+                    int b = 2;
+                    plateau[i-1][j] = joueur;
+                    System.out.println("2");
+                    return true;
                 }
             }
+            if ( i == largeur - 1 && plateau[i][j] !=1 && plateau[i][j] !=-1)
+            {
+                plateau[i][j] = joueur;
+                return true;
+            }
+            if ( i == 0 && plateau[i+1][j] !=0 && plateau[i+1][j] !=2 && plateau[i][j] !=1 && plateau[i][j] !=-1)
+            {
+                 if (plateau[i][j] == 0) {
+                    plateau[i][j] = joueur;
+                    System.out.println("0");
+                    return true;
+                    
+                }
+                if (plateau[i][j] == 2) {
+                    int b = 2;
+                    plateau[i][j] = joueur;
+                    System.out.println("2");
+                    return true;
+                }
+            }
+            i++;
         }
-    }//bug quand les piont sont a tout en haut du tab
+        return false;
+    }
 
+    //bug quand les piont sont a tout en haut du tab
     public boolean checkVictoire() {
         int cpt;
         boolean victoire = false;
@@ -117,42 +143,42 @@ public class Plateau {
 
         }
 
-       /* cpt = 0;
-        for (int i = 0; i < largeur -1; i++) {
+        /* cpt = 0;
+         for (int i = 0; i < largeur -1; i++) {
             
-            for (int jj = 0; jj < longueur -1; jj++) {
-                if (plateau[i][jj] == plateau[i + 1][jj + 1]) {
-                    cpt++;
-                    if (cpt == 3) {
-                        victoire = true;
-                    }
-                } else {
-                    cpt = 0;
-                }
-                i++;
+         for (int jj = 0; jj < longueur -1; jj++) {
+         if (plateau[i][jj] == plateau[i + 1][jj + 1]) {
+         cpt++;
+         if (cpt == 3) {
+         victoire = true;
+         }
+         } else {
+         cpt = 0;
+         }
+         i++;
 
-            }
+         }
                                 
-        }
+         }
 
-        //fin test diagonale gauche
-        //En cours de réalisation
-      /*  cpt = 0;
-        for (int ii = 0; ii < largeur - 1; ii++) {
-            for (int jj = longueur - 1; jj > 1; jj++) {
-                if (plateau[ii][jj] == plateau[ii + 1][jj - 1]) {
-                    cpt++;
-                } else {
-                    cpt--;
-                }
-                ii++;
-                if (cpt == 4) {
-                    victoire = true;
-                }
-            }5
+         //fin test diagonale gauche
+         //En cours de réalisation
+         /*  cpt = 0;
+         for (int ii = 0; ii < largeur - 1; ii++) {
+         for (int jj = longueur - 1; jj > 1; jj++) {
+         if (plateau[ii][jj] == plateau[ii + 1][jj - 1]) {
+         cpt++;
+         } else {
+         cpt--;
+         }
+         ii++;
+         if (cpt == 4) {
+         victoire = true;
+         }
+         }5
         
-        }
-*/
+         }
+         */
         //fin test diagonale droite
         //En cours de réalisatio5n
         cpt = 0;
@@ -173,6 +199,6 @@ public class Plateau {
         }
 //fin test vertical
         return victoire;
-    }//marche aps 
+    }//marche diagonale
 
 }//fin Plateau
