@@ -102,16 +102,17 @@ public class Plateau {
         for (int i = largeur-1 ; i >= 0; i--) {
             for (int j = 0; j < longueur-1 ; j++) {
                 if (plateau[i][j] != 0) {
-                    if (/*(plateau[i][j]!= 0 && plateau[i][j]!=2) &&*/plateau[i][j] == plateau[i][j + 1]) {
+                    if ((plateau[i][j]!= 0 && plateau[i][j]!=2) && plateau[i][j] == plateau[i][j + 1]) {
                         cpt++;
                     } else{
                         cpt=0;
                     }
                 }
-            }
-            if (cpt == 3) {
+                if (cpt == 3) {
                 victoire = true;
             }
+            }
+            
         }
 
      /*   cpt=0;
@@ -154,10 +155,11 @@ public class Plateau {
                         cpt=0;
                     }
                 }
-            }
-            if (cpt == 3) {
+                if (cpt == 3) {
                 victoire = true;
             }
+            }
+            
         }
 //fin test vertical
         return victoire;
