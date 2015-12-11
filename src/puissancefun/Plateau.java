@@ -8,11 +8,13 @@ public class Plateau {
     public int longueur;//->
     public int largeur;// |
     public int[][] plateau;
-
+    private Pions j1,j2;
     //constructeurs
-    public Plateau(int largeur, int longeur) {
+    public Plateau(int largeur, int longeur, Pions j1, Pions j2) {
         this.largeur = largeur;
         this.longueur = longeur;
+        this.j1 = j1;
+        this.j2 = j2;
         this.initialisation();
     }
 
@@ -56,10 +58,10 @@ public class Plateau {
                     System.out.print('.');
                 }
                 if (plateau[i][j] == -1) {
-                    System.out.print(PuissanceFun.lookUn/*joueurUn.apparence*/);
+                    System.out.print(j1.apparence);
                 }
                 if (plateau[i][j] == 1) {
-                    System.out.print(PuissanceFun.lookDeux/*joueurDeux.apparence*/);
+                    System.out.print(j2.apparence);
                 }
 
             }
@@ -99,67 +101,75 @@ public class Plateau {
         boolean victoire = false;
 
         cpt = 0;
-        for (int i = largeur-1 ; i >= 0; i--) {
-            for (int j = 0; j < longueur-1 ; j++) {
+        for (int i = largeur - 1; i >= 0; i--) {
+            for (int j = 0; j < longueur - 1; j++) {
                 if (plateau[i][j] != 0) {
-                    if ((plateau[i][j]!= 0 && plateau[i][j]!=2) && plateau[i][j] == plateau[i][j + 1]) {
+                    if ((plateau[i][j] != 0 && plateau[i][j] != 2) && plateau[i][j] == plateau[i][j + 1]) {
                         cpt++;
-                    } else{
-                        cpt=0;
+                    } else {
+                        cpt = 0;
                     }
                 }
                 if (cpt == 3) {
-                victoire = true;
+                    victoire = true;
+                }
             }
-            }
-            
+
         }
 
-     /*   cpt=0;
-         for(int i = 0; i < largeur-1; i++){
-         for(int jj = 0; jj < longueur-1; jj++){
-         if(plateau[i][jj] == plateau[i+1][jj+1]){
-         cpt++;
-         }else{
-         cpt--;
-         }
-         i++;
-         }
-         }
-         if (cpt == 4) {
-                victoire = true;
+       /* cpt = 0;
+        for (int i = 0; i < largeur -1; i++) {
+            
+            for (int jj = 0; jj < longueur -1; jj++) {
+                if (plateau[i][jj] == plateau[i + 1][jj + 1]) {
+                    cpt++;
+                    if (cpt == 3) {
+                        victoire = true;
+                    }
+                } else {
+                    cpt = 0;
+                }
+                i++;
+
             }
-         //fin test diagonale gauche
-         //En cours de réalisation
-                /*cpt=0;
-         for(int ii = 0; ii < largeur-1; ii++){
-         for(int jj = longueur-1; jj > 1 ; jj++){
-         if(plateau[ii][jj] == plateau[ii+1][jj-1]){
-         cpt++;
-         }else{
-         cpt--;
-         }
-         ii++;
-         }5
-         }
-         if(cpt==4) return True;
-         //fin test diagonale droite
-         *///En cours de réalisation
+                                
+        }
+
+        //fin test diagonale gauche
+        //En cours de réalisation
+      /*  cpt = 0;
+        for (int ii = 0; ii < largeur - 1; ii++) {
+            for (int jj = longueur - 1; jj > 1; jj++) {
+                if (plateau[ii][jj] == plateau[ii + 1][jj - 1]) {
+                    cpt++;
+                } else {
+                    cpt--;
+                }
+                ii++;
+                if (cpt == 4) {
+                    victoire = true;
+                }
+            }5
+        
+        }
+*/
+        //fin test diagonale droite
+        //En cours de réalisatio5n
         cpt = 0;
         for (int j = 0; j < longueur; j++) {
             for (int i = largeur - 1; i > 0; i--) {
                 if (plateau[i][j] != 0) {
                     if (/*(plateau[i][j]!= 0 && plateau[i][j]!=2) &&*/plateau[i][j] == plateau[i - 1][j]) {
                         cpt++;
-                    }else{
-                        cpt=0;
+                    } else {
+                        cpt = 0;
                     }
                 }
                 if (cpt == 3) {
-                victoire = true;
+                    victoire = true;
+                }
             }
-            }
-            
+
         }
 //fin test vertical
         return victoire;

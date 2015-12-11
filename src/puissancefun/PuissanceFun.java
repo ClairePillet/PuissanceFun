@@ -29,18 +29,19 @@ public class PuissanceFun {
         System.out.println("Saisir une longueur: ");
         int longueur = Integer.parseInt(rep.readLine());
 
-        Plateau tab = new Plateau(largeur, longueur);
+        
 
         System.out.println("Choix apparence joueur 1: ");
         String s = rep.readLine();
-        /* char*/ lookUn = s.charAt(0);
-
-      //  Pions joueurUn = new Pions(lookUn);
+        lookUn = s.charAt(0);
+       Pions joueurUn = new Pions(lookUn);
+       
         System.out.println("Choix apparence joueur 2: ");
         s = rep.readLine();
-        /*char*/ lookDeux = s.charAt(0);
-
-    //    joueurDeux = new Pions(lookDeux);
+         lookDeux = s.charAt(0);
+        Pions joueurDeux = new Pions(lookDeux);
+        Plateau tab = new Plateau(largeur, longueur,joueurUn,joueurDeux );
+    //    
         while (tab.checkVictoire() != true) {
                 //juste pour voir la matice en nombre non present dans l'appli final
           /* for (int i = 0; i < largeur; i++) {
