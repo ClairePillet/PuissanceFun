@@ -27,7 +27,7 @@ public class PuissanceFun {
         BufferedReader rep = new BufferedReader(isr);
 
         System.out.println("***MENU PRINCIPAL***");
-        System.out.println("1.  Petit => Grille 4*4");
+        System.out.println("1. Petit => Grille 4*4");
         System.out.println("2. Moyen  => Grille 8 * 8");
         System.out.println("3. Grand => Grille 12*12");
         System.out.println("4. Personnalise => Choisissez votre grille");
