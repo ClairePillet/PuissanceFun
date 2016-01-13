@@ -34,16 +34,16 @@ public class PuissanceFun {
                 "Choix apparence joueur 1: ");
         String s = rep.readLine();
         lookUn = s.charAt(0);
-         joueurUn = new Pions(lookUn);
+        joueurUn = new Pions(lookUn);
 
         System.out.println(
                 "Choix apparence joueur 2: ");
         s = rep.readLine();
         lookDeux = s.charAt(0);
-         joueurDeux = new Pions(lookDeux);
+        joueurDeux = new Pions(lookDeux);
         Plateau tab = new Plateau(largeur, longueur, joueurUn, joueurDeux);
 
-    //    
+        //    
         while (tab.checkVictoire()
                 != true) {
             //juste pour voir la matice en nombre non present dans l'appli final
@@ -58,24 +58,34 @@ public class PuissanceFun {
             if (tour % 2 == 0) {
                 System.out.println("Tour du joueur 1: ");
                 System.out.println("Saisir la colone ou placer le pion: ");
-                int choix = Integer.parseInt(rep.readLine());
-                //  tab.plateau[0][choix - 1] = -1;
-                tab.chute(choix - 1, -1);
 
+                try {
+                    int choix = Integer.parseInt(rep.readLine());
+
+                    //  tab.plateau[0][choix - 1] = -1;
+                    tab.chute(choix - 1, -1);
+                } catch (Exception e) {
+                    System.out.println("Nombre incorrect");
+                }
             } else {
                 System.out.println("Tour du joueur 2: ");
                 System.out.println("Saisir la colone ou placer le pion: ");
+                
+                try{
                 int choix = Integer.parseInt(rep.readLine());
                 //    tab.plateau[0][choix - 1] = 1;
                 do {
-                    verifChute=tab.chute(choix - 1, 1);
-                    if (verifChute == false)
-                            {
-                                System.out.println("Colonne pleine saisiser en une nouvelle.");
-                                choix = Integer.parseInt(rep.readLine());
-                            }
+                    verifChute = tab.chute(choix - 1, 1);
+                    if (verifChute == false) {
+                        System.out.println("Colonne pleine saisissez en une nouvelle.");
+                        choix = Integer.parseInt(rep.readLine());
+                    }
 
                 } while (verifChute == false);
+                
+                }catch(Exception e){System.out.println("Choix incorrect");}
+                
+               
 
             }
             tour++;
