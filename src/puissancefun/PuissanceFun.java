@@ -1,3 +1,5 @@
+4
+2
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -75,11 +77,20 @@ public class PuissanceFun {
                 int choix = Integer.parseInt(rep.readLine());
                 //    tab.plateau[0][choix - 1] = 1;
                 do {
+<<<<<<< HEAD
                     verifChute = tab.chute(choix - 1, 1);
                     if (verifChute == false) {
                         System.out.println("Colonne pleine saisissez en une nouvelle.");
                         choix = Integer.parseInt(rep.readLine());
                     }
+=======
+                    verifChute=tab.chute(choix - 1, 1);
+                    if (verifChute == false)
+                            {
+                                System.out.println("Colonne pleine saisissez en une nouvelle.");
+                                choix = Integer.parseInt(rep.readLine());
+                            }
+>>>>>>> origin/master
 
                 } while (verifChute == false);
                 
@@ -94,7 +105,7 @@ public class PuissanceFun {
         tab.affichage();
 
         System.out.println(
-                "Victoire");
+                "Victoire !");
 
     }
 

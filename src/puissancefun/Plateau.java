@@ -11,7 +11,6 @@ public class Plateau {
     private Pions j1, j2;
 
     //constructeurs
-
     public Plateau(int largeur, int longeur, Pions j1, Pions j2) {
         this.largeur = largeur;
         this.longueur = longeur;
@@ -80,39 +79,49 @@ public class Plateau {
 
     public boolean chute(int j, int joueur) {
         int i = 0;
-        while (i < largeur ) {
-            if ((plateau[i ][j] == -1 || plateau[i ][j] == 1 )&& i!=0) {
-                System.out.println("1");
-                if (plateau[i-1][j] == 0) {
-                    plateau[i-1][j] = joueur;
-                    System.out.println("0");
+        while (i < largeur) {
+            if ((plateau[i][j] == -1 || plateau[i][j] == 1) && i != 0) {
+                //System.out.println("1");
+                if (plateau[i - 1][j] == 0) {
+                    plateau[i - 1][j] = joueur;
+                    //   System.out.println("0");
                     return true;
-                    
+
                 }
-                if (plateau[i-1][j] == 2) {
-                    int b = 2;
-                    plateau[i-1][j] = joueur;
-                    System.out.println("2");
+                if (plateau[i - 1][j] == 2) {
+                    //  int b = 2;
+                    plateau[i - 1][j] = joueur;
+                  //  System.out.println("2");
+                    effetColonne(j);//effet
                     return true;
                 }
             }
-            if ( i == largeur - 1 && plateau[i][j] !=1 && plateau[i][j] !=-1)
+
+            if (i == largeur - 1 && plateau[i][j] != 1 && plateau[i][j] != -1)//test avant tout en bas
             {
+                if (plateau[i][j]==2){
+                    plateau[i][j] = joueur;
+                    effetColonne(j);
+                return true;
+                }else{
                 plateau[i][j] = joueur;
                 return true;
+                }
             }
-            if ( i == 0 && plateau[i+1][j] !=0 && plateau[i+1][j] !=2 && plateau[i][j] !=1 && plateau[i][j] !=-1)
+            if (i == 0 && plateau[i + 1][j] != 0 && plateau[i + 1][j] != 2 && plateau[i][j] != 1 && plateau[i][j] != -1)//test avant d'inserer toute en haut
             {
-                 if (plateau[i][j] == 0) {
+                if (plateau[i][j] == 0) {
                     plateau[i][j] = joueur;
-                    System.out.println("0");
+                    //  System.out.println("0");
                     return true;
-                    
+
                 }
                 if (plateau[i][j] == 2) {
                     int b = 2;
                     plateau[i][j] = joueur;
-                    System.out.println("2");
+                    //System.out.println("2");
+                                        effetColonne(j);//effet
+
                     return true;
                 }
             }
@@ -201,4 +210,12 @@ public class Plateau {
         return victoire;
     }//marche diagonale
 
+    public void effetColonne(int j) {
+        for (int i = 0; i < largeur; i++) {
+            if (plateau[i][j]!=2){
+                            plateau[i][j] = 0;
+
+            }
+        }
+    }
 }//fin Plateau
