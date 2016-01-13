@@ -216,6 +216,8 @@ public class Plateau {
                             plateau[i][j] = 0;
 
             }
+            
         }
+        System.out.println("BOOM");
     }
 }//fin Plateau
