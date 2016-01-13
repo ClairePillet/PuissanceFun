@@ -19,10 +19,13 @@ public class PuissanceFun {
         char lookUn;
         char lookDeux;
         boolean verifChute;
+        int rejouer;
 
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader rep = new BufferedReader(isr);
 
+         do { 
+          
         System.out.println(
                 "Saisir une largeur: ");
         int largeur = Integer.parseInt(rep.readLine());
@@ -76,26 +79,25 @@ public class PuissanceFun {
                 int choix = Integer.parseInt(rep.readLine());
                 //    tab.plateau[0][choix - 1] = 1;
                 do {
-<<<<<<< HEAD
+
                     verifChute = tab.chute(choix - 1, 1);
                     if (verifChute == false) {
                         System.out.println("Colonne pleine saisissez en une nouvelle.");
                         choix = Integer.parseInt(rep.readLine());
                     }
-=======
+
                     verifChute=tab.chute(choix - 1, 1);
                     if (verifChute == false)
                             {
                                 System.out.println("Colonne pleine saisissez en une nouvelle.");
                                 choix = Integer.parseInt(rep.readLine());
                             }
->>>>>>> origin/master
+
 
                 } while (verifChute == false);
                 
                 }catch(Exception e){System.out.println("Choix incorrect");}
-                
-               
+                      
 
             }
             tour++;
@@ -106,6 +108,11 @@ public class PuissanceFun {
         System.out.println(
                 "Victoire !");
 
+           System.out.println("Voulez vous rejouez ? Tapez 0 pour continuer, 1 pour quitter");
+        rejouer = Integer.parseInt(rep.readLine());
+           
+       
+      } while(rejouer == 0 );
     }
 
 }//puissfun
