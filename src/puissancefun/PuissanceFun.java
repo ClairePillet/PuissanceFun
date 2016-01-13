@@ -86,14 +86,6 @@ public class PuissanceFun {
                         choix = Integer.parseInt(rep.readLine());
                     }
 
-                    verifChute=tab.chute(choix - 1, 1);
-                    if (verifChute == false)
-                            {
-                                System.out.println("Colonne pleine saisissez en une nouvelle.");
-                                choix = Integer.parseInt(rep.readLine());
-                            }
-
-
                 } while (verifChute == false);
                 
                 }catch(Exception e){System.out.println("Choix incorrect");}
